@@ -1,7 +1,7 @@
 from math import log
 import csv
 
-def assignRankings(growths, evalStrings):
+def assignRankings(pop_growths):
     animals = [
         "elephants",
         "pandas",
@@ -21,10 +21,8 @@ def assignRankings(growths, evalStrings):
 
     # obtain values
     values = []
-    for i in range(len(animals)):
-        growth = growths[i]
-        animal = animals[i]
-        value = evalStrings[growth][animal]
+    for animal in animals:
+        value = pop_growths[animal]
         values.append(value)
 
     # rank values descending order
@@ -32,7 +30,6 @@ def assignRankings(growths, evalStrings):
     while (not max(values) == -1):
         nextValue = max(values)
         index = values.index(nextValue) # find index
-        print(index)
         values[index] = -1
         rankings.append(index)
 
@@ -43,7 +40,7 @@ def bubbleSort(arr):
     # Traverse through all array elements
     for i in range(n):
  
-        # Last i elements are already in place
+        # Last i elements ar5e already in place
         for j in range(0, n-i-1):
             # traverse the array from 0 to n-i-1
             # Swap if the element found is greater
@@ -119,27 +116,26 @@ def quickSort(arr,low,high):
         
 def main():
     n = 100000
-    evalStrings = {
-        "n^2"      : {"elephants"    : n**2},       # 0
-        "logn"     : {"pandas"       : log(n)},     # 1
-        "n"        : {"bears"        : n},          # 2
-        "2^n"      : {"humans"       : 2**n},       # 3
-        "n^3"      : {"honeybadgers" : n**3},       # 4
-        "4*n"      : {"antelopes"    : 4*n},        # 5
-        "1"        : {"t-rex"        : 1},          # 6
-        "10"       : {"dodo"         : 10},         # 7
-        "4n^3"     : {"snakes"       : 4*n**3},     # 8
-        "n*logn"   : {"gazelles"     : n*log(n)},   # 9
-        "n^n"      : {"ants"         : n**n},       # 10
-        "n^2+n^3"  : {"squirrels"    : n**2+n**3},  # 11
-        "n^4"      : {"cows"         : n**4},       # 12
-        "n^4+n^5"  : {"horses"       : n**4+n**5},  # 13
+    pop_growths = {
+        "elephants"    : n**2,       # 0
+        "pandas"       : log(n),     # 1
+        "bears"        : n,          # 2
+        "humans"       : 2**n,       # 3
+        "honeybadgers" : n**3,       # 4
+        "antelopes"    : 4*n,        # 5
+        "t-rex"        : 1,          # 6
+        "dodo"         : 10,         # 7
+        "snakes"       : 4*n**3,     # 8
+        "gazelles"     : n*log(n),   # 9
+        "ants"         : n**n,       # 10
+        "squirrels"    : n**2+n**3,  # 11
+        "cows"         : n**4,       # 12
+        "horses"       : n**4+n**5  # 13
     }
-    
-    data = read("animalData.csv")
 
-    ranks = assignRankings(data, evalStrings)
+    ranks = assignRankings(pop_growths)
 
+    print("BUBBLE SORT")
     bubbleSort(ranks.copy())
     print("INSERTION SORT")
     insertionSort(ranks.copy())

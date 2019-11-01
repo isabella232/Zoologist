@@ -13,10 +13,6 @@
 	32. Edit Sorting Functions
 		321. Edit Sorting Functions explained
 
-4. Main()
-	41.Main() Explained
-		411. Main() solution
-
 rough draft ideas
 
 Open and read in file of the animals and put their rank into a dictionary. The file is ordered from slowest growth to fastest.

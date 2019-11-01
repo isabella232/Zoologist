@@ -1,0 +1,31 @@
+1. Zoologist
+	11. File to Dictionary
+      	  112. read in file
+        	113. loop content into dictionary
+
+2. Writing Array
+	21. Writing Array Explained
+		211. Writing Array Solution
+
+3. Sorting Equations 
+	31. compare()
+		311. compare() explained
+	32. Edit Sorting Functions
+		321. Edit Sorting Functions explained
+
+4. Main()
+	41.Main() Explained
+		411. Main() solution
+
+rough draft ideas
+
+Open and read in file of the animals and put their rank into a dictionary. The file is ordered from slowest growth to fastest.
+dict[]: { [1:Horse], [2:Buffalo] ….[14:Squirrel] }
+write function readFileintoDict() and return the dictionary 
+
+Create an array where you write out each equation in python form in the order of your scrambled documents
+arr(): [ n^2, log n, 5^n, 8n, 4log n^2, 2^log n… ]
+
+Sort these equations by their end behavior or how it grows towards infinity. Insert a large number(ex:1000) to check larger/smaller 
+have a functions called compare() to check 2 equation for larger which returns boolean value
+Then modify the given sorts to check using compare() for larger value

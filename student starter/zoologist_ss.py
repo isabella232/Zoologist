@@ -1,32 +1,26 @@
 from math import log
-# TODO import libraries as needed
+import csv
 
-def assignRankings(pop_growths, animals):
+def assignRankings(pop_growths):
+    # TODO
 
-    # rank values descending order
-    rankings = [] # key: rank, value: growth index
-    
-    # TODO fill rankings with the correct rankings
-    
-    return rankings
-        
 def bubbleSort(arr):
+    # TODO
     n = len(arr)
     # Traverse through all array elements
     for i in range(n):
- 
-        # Last i elements ar5e already in place
+        # Last i elements are already in place
         for j in range(0, n-i-1):
             # traverse the array from 0 to n-i-1
             # Swap if the element found is greater
             # than the next element
-            if arr[j] > arr[j+1] :
+            if (arr[j] > arr[j+1]):
                 arr[j], arr[j+1] = arr[j+1], arr[j]
-                print(arr)
+
                 
 # Function to do insertion sort 
 def insertionSort(arr): 
-  
+    # TODO
     # Traverse through 1 to len(arr) 
     for i in range(1, len(arr)): 
   
@@ -40,63 +34,30 @@ def insertionSort(arr):
                 arr[j + 1] = arr[j]
                 j -= 1
         arr[j + 1] = key
-        print(arr)
 
-def read(filename):
-    with open(filename, 'r') as csv_file:
-        reader = csv.reader(csv_file)
-        return next(reader)
 
-# This function takes last element as pivot, places 
-# the pivot element at its correct position in sorted 
-# array, and places all smaller (smaller than pivot) 
-# to left of pivot and all greater elements to right 
-# of pivot 
-def partition(arr,low,high): 
-    i = ( low-1 )         # index of smaller element 
-    pivot = arr[high]     # pivot 
-  
-    for j in range(low , high): 
-  
-        # If current element is smaller than or 
-        # equal to pivot 
-        if   arr[j] <= pivot: 
-          
-            # increment index of smaller element 
-            i = i+1 
-            arr[i],arr[j] = arr[j],arr[i]
-            print(arr)
-  
-    arr[i+1],arr[high] = arr[high],arr[i+1]
-    print(arr)
-    return ( i+1 ) 
-  
-# The main function that implements QuickSort 
-# arr[] --> Array to be sorted, 
-# low  --> Starting index, 
-# high  --> Ending index 
-  
-# Function to do Quick sort 
-def quickSort(arr,low,high): 
-    if low < high: 
-  
-        # pi is partitioning index, arr[p] is now 
-        # at right place 
-        pi = partition(arr,low,high) 
-  
-        # Separately sort elements before 
-        # partition and after partition 
-        quickSort(arr, low, pi-1) 
-        quickSort(arr, pi+1, high)
+def selectionSort(arr):
+    # TODO
+    # Traverse through all array elements 
+    for i in range(len(arr)): 
+      
+        # Find the minimum element in remaining  
+        # unsorted array 
+        min_idx = i
+        for j in range(i+1, len(arr)): 
+            if arr[min_idx] > arr[j]: 
+                min_idx = j 
+                  
+        # Swap the found minimum element with  
+        # the first element
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
 
 
 def read(filename):
-    ''' reads filename and returns list of all the animals names
-        each element of the list is one animal name no more, no less'''
     # TODO
 
 def main():
-    n = 100000
+    n = 1
     pop_growths = [
         n**2,       # 0
         log(n),     # 1
@@ -114,14 +75,18 @@ def main():
         n**4+n**5   # 13
     ]
 
-    animals = read("animalNames.txt")
-    ranks = assignRankings(pop_growths, animals)
+    animals = read("animalNames.txt") # animals = {index : animalName}
+    ranks = assignRankings(pop_growths.copy()) # ranks = {index : rank}
+
+    for i in range(len(ranks)):
+        print(animals[ranks[i]])
 
     print("BUBBLE SORT")
-    bubbleSort(ranks.copy())
+    bubbleSort(pop_growths.copy())
     print("INSERTION SORT")
     insertionSort(ranks.copy())
-    print("QUICK SORT")
-    quickSort(ranks.copy(), 0, 10)
+    print("SELECTION SORT")
+    selectionSort(ranks.copy())
+
 
 main()

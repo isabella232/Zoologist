@@ -108,7 +108,8 @@ def main():
         print(animals[ranks[i]])
 
     print("BUBBLE SORT")
-    bubbleSort(pop_growths.copy())
+    bubbleSort(ranks
+               .copy())
     print("INSERTION SORT")
     insertionSort(ranks.copy())
     print("SELECTION SORT")
